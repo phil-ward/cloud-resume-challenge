@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phil Ward | IT Professional | philward.io</title>
+    <link href="reset-fonts-grids.css" type="text/css" rel="stylesheet" media="all">
+    <link href="resume.css" type="text/css" rel="stylesheet" media="all">
+    <script>
+        fetch('https://f5p1cg0kf0.execute-api.us-east-1.amazonaws.com/Prod/put')
+            .then(() => fetch('https://f5p1cg0kf0.execute-api.us-east-1.amazonaws.com/Prod/get'))
+            .then(response => response.json())
+            .then((data) => {
+                document.getElementById('count').innerText = data.count
+            })
+    </script>
+</head>
+<body>
+<div id="doc2" class="yui-t7">
+    <div id="inner">
+        <div id="hd">
+            <div class="yui-gc">
+                <div class="yui-u first">
+                    <h1>Phil Ward</h1>
+                    <h2>IT Professional, Manager</h2>
+                </div>
+                <div class="yui-u">
+                    <div class="contact-info">
+                        <h3>Stockholm, Sweden</h3>
+                        <h3><a href="mailto:ward.phil@gmail.com">Email Me</a></h3>
+                        <h3><a href="https://www.linkedin.com/in/phillip-ward-9166501a/">LinkedIn Profile</a></h3>
+                        <h3><a href="phils_resume.pdf">Download My Resume</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bd">
+            <div id="yui-main">
+                <div class="yui-b">
+                    <div class="yui-gf">
+                        <div class="yui-u first">
+                            <h2>Certifications</h2>
+                        </div>
+                        <div class="yui-u">
+                            <div class="talent">
+                                <h2>Amazon Web Services</h2>
+                                <ul>
+                                    <li class="last">Certified Cloud Practitioner</li>
+                                    <li class="last">Solutions Architect - Associate</li>
+                                </ul>
+                            </div>
+                            <div class="talent">
+                                <h2>Free Code Camp</h2>
+                                <ul>
+                                    <li class="last">JavaScript Algorithms and Data Structures</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yui-gf">
+                        <div class="yui-u first">
+                            <h2>Technical</h2>
+                        </div>
+                        <div class="yui-u">
+                            <ul class="talent">
+                                <li>Python</li>
+                                <li>S3</li>
+                                <li>Route 53</li>
+                            </ul>
+                            <ul class="talent">
+                                <li>Linux Administration</li>
+                                <li>Team Management</li>
+                                <li>Git</li>
+                            </ul>
+                            <ul class="talent">
+                                <li>Windows Server Administration</li>
+                                <li>Incident Management</li>
+                                <li>Cloudfront</li>
+                            </ul>
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="yui-gf">
+                        <div class="yui-u first">
+                            <h2>Employment History</h2>
+                        </div>
+                        <div class="yui-u">
+                            <div class="job">
+                                <h2>Cerner Sverige AB</h2>
+                                <h3>Senior Manager, Client Operations</h3>
+                                <h4>November 2019-Present <br> Stockholm, Sweden</h4>
+                                <p>Manage remote hosting operations team in Cerner’s global organization. Provide remote hosting of Cerner’s electronic health record systems on behalf of seven healthcare organizations, including the technical and application aspects of the client relationship. Lead and mentor a team of associates
+                                    responsible for delivering the technical aspects of a client projects and systems.
+                                </p>
+                            </div>
+                            <div class="job">
+                                <h2>Cerner Ltd.</h2>
+                                <h3>Lead Production Owner Architect</h3>
+                                <h4>October 2015 - December 2019 <br> London, United Kingdom</h4>
+                                <p>Manage remote-hosted electronic medical record systems in Cerner’s global organization. Provide
+                                    extensive technical knowledge support across various Cerner technology architectures. Mentor and
+                                    coach other associates to raise the standard of service. Recognized as a leader amongst peer Production
+                                    Owners, with direct responsibility for five client systems across the UK and Ireland.</p>
+                            </div>
+                            <div class="job">
+                                <h2>Cerner Corporation</h2>
+                                <h3>Senior System Engineer</h3>
+                                <h4>July 2012 - October 2015 <br> Kansas City, Missouri</h4>
+                                <p>Provide system implementation, support, monitoring and maintenance of Cerner’s solutions and services.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="yui-gf">
+                        <div class="yui-u">
+                            <div class="job">
+                                <h2>Projects</h2>
+                                <h3>GitHub: GitHub Repo</h3>
+                                <h3>Blog Post: </h3>
+                                <h3>Original Project Link: </h3>
+                                <h4>September 2021</h4>
+                                <p>Building a website from the ground up with a database, APIGW, custom domain, HTTPs Security, Serverless Functions triggered through APIGW written in Python, all packaged into a SAM template only utilizing Amazon's wide variety of Cloud services.</p>
+                            </div>
+                        </div>
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div id="ft">
+            <p>You are visitor number: <span id='count'></span> </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
