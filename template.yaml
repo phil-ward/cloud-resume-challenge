@@ -104,7 +104,7 @@ Resources:
           - resume-test.philward.io
         DefaultCacheBehavior:
           ViewerProtocolPolicy: allow-all
-          TargetOriginId: resume-test.philward.io.s3-website-us-east-1.amazonaws.com
+          TargetOriginId: resume-test.philward.io.s3.us-east-1.amazonaws.com
           DefaultTTL: 0
           MinTTL: 0
           MaxTTL: 0
