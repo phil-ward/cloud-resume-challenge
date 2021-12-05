@@ -147,7 +147,7 @@ dist
 
 ### SAM+config Patch ###
 # SAM config - exclude this file if sharing publicly
-samconfig.toml
+## samconfig.toml
 
 ### WebStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
