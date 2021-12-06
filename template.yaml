@@ -64,7 +64,8 @@ Resources:
         Statement:
           - Sid: OAIAccess
             Effect: Allow
-            Principal: !Ref DistributionOAI
+            Principal:
+              CanonicalUser: !GetAtt DistributionOAI.S3CanonicalUserId
             Action: "s3:GetObject"
             Resource: !Join
               -  ""
@@ -114,7 +115,8 @@ Resources:
           - DomainName: resume-test.philward.io.s3.us-east-1.amazonaws.com
             Id: resume-test
             S3OriginConfig:
-              OriginAccessIdentity: !Ref DistributionOAI
+              OriginAccessIdentity:
+                !Join [ "", [ "origin-access-identity/cloudfront/", !Ref DistributionOAI ] ]
         Enabled:  true
         DefaultRootObject:  resume.html
 
