@@ -102,11 +102,9 @@ Resources:
         Aliases:
           - resume-test.philward.io
         DefaultCacheBehavior:
-          ViewerProtocolPolicy: allow-all
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          ViewerProtocolPolicy: redirect-to-https
           TargetOriginId: resume-test
-          DefaultTTL: 0
-          MinTTL: 0
-          MaxTTL: 0
           ForwardedValues:
             QueryString: false
         Origins:
