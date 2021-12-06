@@ -62,9 +62,9 @@ Resources:
         Id: ResumeBucketPolicy
         Version: 2012-10-17
         Statement:
-          - Sid: PublicReadForGetBucketObjects
+          - Sid: OAIAccess
             Effect: Allow
-            Principal: "*"
+            Principal: !Ref DistributionOAI
             Action: "s3:GetObject"
             Resource: !Join
               -  ""
@@ -114,9 +114,15 @@ Resources:
           - DomainName: resume-test.philward.io.s3.us-east-1.amazonaws.com
             Id: resume-test
             S3OriginConfig:
-              OriginAccessIdentity: ""
+              OriginAccessIdentity: !Ref DistributionOAI
         Enabled:  true
         DefaultRootObject:  resume.html
+
+  DistributionOAI:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "OAI for Resume Site"
 
   ViewCountTable:
     Type: AWS::DynamoDB::Table
