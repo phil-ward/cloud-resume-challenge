@@ -111,10 +111,10 @@ Resources:
           ForwardedValues:
             QueryString: false
         Origins:
-          - DomainName: resume-test.philward.io.s3-website-us-east-1.amazonaws.com
+          - DomainName: resume-test.philward.io.s3.us-east-1.amazonaws.com
             Id: resume-test
-            CustomOriginConfig:
-              OriginProtocolPolicy: match-viewer
+            S3OriginConfig:
+              OriginAccessIdentity: ""
         Enabled:  true
         DefaultRootObject:  resume.html
 
