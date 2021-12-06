@@ -50,9 +50,7 @@ Resources:
   ResumeSite:
     Type: AWS::S3::Bucket
     Properties:
-      AccessControl: PublicRead
-      WebsiteConfiguration:
-        IndexDocument: resume.html
+      AccessControl: Private
       BucketName: resume-test.philward.io
 
   BucketPolicy:
