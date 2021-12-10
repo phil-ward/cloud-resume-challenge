@@ -52,6 +52,15 @@ Resources:
     Properties:
       AccessControl: Private
       BucketName: resume-test.philward.io
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - '*'
+            AllowedMethods:
+              - GET
+              - HEAD
+            AllowedOrigins:
+              - "https://resume-test.philward.io"
 
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -103,6 +112,7 @@ Resources:
           - resume-test.philward.io
         DefaultCacheBehavior:
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
           ViewerProtocolPolicy: redirect-to-https
           TargetOriginId: resume-test
           ForwardedValues:
