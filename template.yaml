@@ -113,6 +113,7 @@ Resources:
         DefaultCacheBehavior:
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
           OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
+          ResponseHeadersPolicyId:  eaab4381-ed33-4a86-88ca-d9558dc6cd63
           ViewerProtocolPolicy: redirect-to-https
           TargetOriginId: resume-test
           ForwardedValues:
@@ -125,6 +126,28 @@ Resources:
                 !Join [ "", [ "origin-access-identity/cloudfront/", !Ref DistributionOAI ] ]
         Enabled:  true
         DefaultRootObject:  resume.html
+
+#  ResumeResponseHeadersPolicy:
+#    Type: AWS::CloudFront::ResponseHeadersPolicy
+#    Properties:
+#      ResponseHeadersPolicyConfig:
+#        Name: ResumeSiteResponseHeadersPolicy
+#        CorsConfig:
+#          AccessControlAllowCredentials: False
+#          AccessControlAllowHeaders:
+#            - x-custom-request-header
+#          AccessControlAllowMethods:
+#            - GET
+#            - HEAD
+#          AccessControlAllowOrigins:
+#            - philward.io
+#          AccessControlExposeHeaders:
+#            - x-custom-response-header
+#          AccessControlMaxAgeSec: 300
+#          OriginOverride: True
+#        CustomHeadersConfig:
+#          Items:
+#            -
 
   DistributionOAI:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
