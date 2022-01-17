@@ -52,7 +52,6 @@ def lambda_handler(event, context):
             "Access-Control-Allow-Headers": "*",
         },
         "body": json.dumps({
-            '{"count"}': f'"{current_count["visitors"]}"',
-
+            "count": f'{current_count["total_visitors"]}',
         }),
     }

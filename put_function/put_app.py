@@ -41,7 +41,7 @@ def lambda_handler(event, context):
         Key={
             "ID": "visitors"
         },
-        UpdateExpression='Set visitors = visitors + :val',
+        UpdateExpression='Set total_visitors = total_visitors + :val',
         ExpressionAttributeValues={
             ':val': decimal.Decimal(1)
         }

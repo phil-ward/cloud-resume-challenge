@@ -14,9 +14,9 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: test get-function
-        run: cd /home/runner/work/cloud-resume-challenge/get-function && npm test ./
+        run: cd /home/runner/work/cloud-resume-challenge/get_function && npm test ./
       - name: test put-function
-        run: cd /home/runner/work/cloud-resume-challenge/put-function && npm test ./
+        run: cd /home/runner/work/cloud-resume-challenge/put_function && npm test ./
 
   build-and-deploy-infra:
     needs: test-infra
