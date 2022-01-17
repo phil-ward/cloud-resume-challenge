@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  cloud-resume-challenge
+  cloud-resume-challenge-dev
 
-  Sample SAM Template for cloud-resume-challenge
+  Sample SAM Template for cloud-resume-challenge-dev
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -14,12 +14,9 @@ Resources:
   GetFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      Policies:
-        - DynamoDBReadPolicy:
-            TableName:  cloud-resume-challenge
-      CodeUri: get-function/
-      Handler: app.lambdaHandler
-      Runtime: nodejs14.x
+      CodeUri: get_function/
+      Handler: get_app.lambda_handler
+      Runtime: python3.9
       Architectures:
         - x86_64
       Events:
@@ -32,12 +29,9 @@ Resources:
   PutFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName:  cloud-resume-challenge
-      CodeUri: put-function/
-      Handler: app.lambdaHandler
-      Runtime: nodejs14.x
+      CodeUri: put_function/
+      Handler: put_app.lambda_handler
+      Runtime: python3.9
       Architectures:
         - x86_64
       Events:
@@ -75,10 +69,10 @@ Resources:
               CanonicalUser: !GetAtt DistributionOAI.S3CanonicalUserId
             Action: "s3:GetObject"
             Resource: !Join
-              -  ""
-              -  -  "arn:aws:s3:::"
-                 -  !Ref ResumeSite
-                 -  /*
+              - ""
+              - - "arn:aws:s3:::"
+                - !Ref ResumeSite
+                - /*
       Bucket: !Ref ResumeSite
 
   ResumeRoute53Record:
@@ -97,8 +91,8 @@ Resources:
     Properties:
       DomainName: resume-test.philward.io
       DomainValidationOptions:
-            - DomainName: resume-test.philward.io
-              HostedZoneId: Z05294393DFAN1FAG0KAE
+        - DomainName: resume-test.philward.io
+          HostedZoneId: Z05294393DFAN1FAG0KAE
       ValidationMethod: DNS
 
   ResumeDistribution:
@@ -113,7 +107,7 @@ Resources:
         DefaultCacheBehavior:
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
           OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
-          ResponseHeadersPolicyId:  eaab4381-ed33-4a86-88ca-d9558dc6cd63
+          ResponseHeadersPolicyId: eaab4381-ed33-4a86-88ca-d9558dc6cd63
           ViewerProtocolPolicy: redirect-to-https
           TargetOriginId: resume-test
           ForwardedValues:
@@ -124,30 +118,8 @@ Resources:
             S3OriginConfig:
               OriginAccessIdentity:
                 !Join [ "", [ "origin-access-identity/cloudfront/", !Ref DistributionOAI ] ]
-        Enabled:  true
-        DefaultRootObject:  resume.html
-
-#  ResumeResponseHeadersPolicy:
-#    Type: AWS::CloudFront::ResponseHeadersPolicy
-#    Properties:
-#      ResponseHeadersPolicyConfig:
-#        Name: ResumeSiteResponseHeadersPolicy
-#        CorsConfig:
-#          AccessControlAllowCredentials: False
-#          AccessControlAllowHeaders:
-#            - x-custom-request-header
-#          AccessControlAllowMethods:
-#            - GET
-#            - HEAD
-#          AccessControlAllowOrigins:
-#            - philward.io
-#          AccessControlExposeHeaders:
-#            - x-custom-response-header
-#          AccessControlMaxAgeSec: 300
-#          OriginOverride: True
-#        CustomHeadersConfig:
-#          Items:
-#            -
+        Enabled: true
+        DefaultRootObject: resume.html
 
   DistributionOAI:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
@@ -161,24 +133,8 @@ Resources:
       TableName: cloud-resume-challenge
       BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
-        - AttributeName:  "ID"
-          AttributeType:  "S"
+        - AttributeName: "ID"
+          AttributeType: "S"
       KeySchema:
-        - AttributeName:  "ID"
-          KeyType:  "HASH"
-
-
-
-#Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-#  HelloWorldApi:
-#    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-#    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-#  HelloWorldFunction:
-#    Description: "Hello World Lambda Function ARN"
-#    Value: !GetAtt HelloWorldFunction.Arn
-#  HelloWorldFunctionIamRole:
-#    Description: "Implicit IAM Role created for Hello World function"
-#    Value: !GetAtt HelloWorldFunctionRole.Arn
+        - AttributeName: "ID"
+          KeyType: "HASH"
