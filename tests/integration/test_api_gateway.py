@@ -25,7 +25,7 @@ class TestApiGateway(TestCase):
         """
         stack_name = TestApiGateway.get_stack_name()
 
-        client = boto3.client("cloudformation")
+        client = boto3.client("cloudformation", region="us-east-1")
 
         try:
             response = client.describe_stacks(StackName=stack_name)
