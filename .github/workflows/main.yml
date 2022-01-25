@@ -4,6 +4,8 @@ jobs:
   test-infra:
     runs-on: ubuntu-latest
     timeout-minutes: 2
+    env:
+      AWS_SAM_STACK_NAME: cloud-resume-challenge
     strategy:
       fail-fast: false
       matrix:
