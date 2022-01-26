@@ -47,7 +47,7 @@ class TestApiGateway(TestCase):
         Call the API Gateway endpoint and check the response
         """
         response = requests.get(self.api_endpoint)
-        message = response.json()["body"]
+        message = response.json()
         assert "count" in message
         assert isinstance(message["count"], str)
         #self.assertDictEqual(response.json(), {"count": "hello world"})
