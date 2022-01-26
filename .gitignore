@@ -267,5 +267,7 @@ fabric.properties
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/misc.xml
 get_function/__pycache__/**
+put_function/__pycache__/**
 tests/unit/__pycache__/**
+tests/integration/__pycache__/**
 tests/__pycache__/**
