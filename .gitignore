@@ -266,3 +266,6 @@ fabric.properties
 *.swp
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/misc.xml
+get_function/__pycache__/**
+tests/unit/__pycache__/**
+tests/__pycache__/**
