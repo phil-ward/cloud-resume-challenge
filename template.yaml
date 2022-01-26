@@ -144,5 +144,5 @@ Resources:
 Outputs:
   ViewCountApi:
     Description: "API Gateway endpoint URL for Prod stage for ViewCountAPI function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/get"
     
